@@ -1,16 +1,27 @@
-# maple-recorder
+# Maple Recorder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+화면 공유를 통해 게임 화면 일부를 OCR로 읽어 시계열 데이터로 기록하는 실험용 SPA입니다.
 
-Currently, two official plugins are available:
+- 브라우저에서만 동작하며 모든 데이터는 로컬에서 처리되고 서버로 전송되지 않습니다.
+- ROI(관심 영역)를 드래그 또는 슬라이더로 지정할 수 있습니다.
+- 추출된 값은 타임라인과 Recharts 라인 차트로 동시에 시각화됩니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 개발
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 배포
+
+GitHub Pages 기준:
+
+```bash
+npm run build
+npm run deploy
+```
 
 ## License
 
-This project is licensed under the [Apache License 2.0](LICENSE).
+Apache-2.0
