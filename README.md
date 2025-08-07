@@ -1,5 +1,8 @@
 # Maple Recorder
 
+[![GitHub license](https://img.shields.io/github/license/MovieJo/maple-recorder)](LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/MovieJo/maple-recorder)](https://github.com/MovieJo/maple-recorder)
+
 화면 공유를 통해 게임 화면 일부를 OCR로 읽어 시계열 데이터로 기록하는 실험용 SPA입니다.
 
 - 브라우저에서만 동작하며 모든 데이터는 로컬에서 처리되고 서버로 전송되지 않습니다.
