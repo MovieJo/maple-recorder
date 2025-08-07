@@ -9,8 +9,8 @@ export default function useOcrWorker() {
     ;(async () => {
       try {
         const worker = await createWorker()
-        await worker.loadLanguage('eng')
-        await worker.initialize('eng')
+        await worker.loadLanguage('eng+kor')
+        await worker.initialize('eng+kor')
         if (mounted) workerRef.current = worker
       } catch (e) {
         console.error('Failed to initialize OCR worker', e)
