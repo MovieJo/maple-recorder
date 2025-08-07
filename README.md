@@ -17,6 +17,8 @@ npm run dev
 
 GitHub Pages 기준:
 
+[https://MovieJo.github.io/maple-recorder](https://MovieJo.github.io/maple-recorder)
+
 ```bash
 npm run build
 npm run deploy
