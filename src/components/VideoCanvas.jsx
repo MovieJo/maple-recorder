@@ -47,9 +47,9 @@ const VideoCanvas = forwardRef(({ stream, roi, overlayRef, onMouseDown }, ref) =
   }))
 
   return (
-    <div className="video-container">
-      <video ref={videoRef} className="video" autoPlay playsInline />
-      <canvas ref={overlayRef} className="overlay" onMouseDown={onMouseDown} />
+    <div className="relative inline-block">
+      <video ref={videoRef} className="block max-w-full" autoPlay playsInline />
+      <canvas ref={overlayRef} className="absolute top-0 left-0" onMouseDown={onMouseDown} />
     </div>
   )
 })
