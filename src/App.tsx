@@ -18,6 +18,10 @@ export default function App() {
   const [intervalMs, setIntervalMs] = useState<number>(1000)
   const [results, setResults] = useState<OcrResult[]>([])
 
+  const handleClearResults = () => {
+    setResults([])
+  }
+
   useEffect(() => {
     if (!stream) return
 
@@ -50,12 +54,6 @@ export default function App() {
     }
   }, [intervalMs, recognize, stream])
 
-  useEffect(() => {
-    if (!stream) {
-      setResults([])
-    }
-  }, [stream])
-
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto space-y-6 px-4 py-8">
@@ -77,7 +75,7 @@ export default function App() {
               roi={roi}
               setRoi={setRoi}
             />
-            <Timeline results={results} />
+            <Timeline results={results} onClear={handleClearResults} />
           </div>
 
           <div className="space-y-6">
