@@ -13,8 +13,8 @@ export default function Timeline({ results, onClear }: TimelineProps) {
   const hasResults = results.length > 0
 
   return (
-    <Card className="h-full">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
+    <Card>
+      <CardHeader>
         <CardTitle>인식 결과 타임라인</CardTitle>
         <Button variant="outline" size="sm" onClick={onClear} disabled={!hasResults}>
           데이터 초기화

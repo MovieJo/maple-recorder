@@ -38,7 +38,7 @@ export default function CaptureControls({
   }
 
   return (
-    <Card className="h-full">
+    <Card>
       <CardHeader>
         <CardTitle>화면 캡처 제어</CardTitle>
         <CardDescription>화면 공유와 OCR 주기를 관리하세요.</CardDescription>
