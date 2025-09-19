@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/MovieJo/maple-recorder)](LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/MovieJo/maple-recorder)](https://github.com/MovieJo/maple-recorder)
-![Codex Powered](https://img.shields.io/badge/codex-coding%20in%20progress-7b42bc?logo=openai&logoColor=white)
+[![Codex Powered](https://img.shields.io/badge/codex-coding%20in%20progress-7b42bc?logo=openai&logoColor=white)](https://developers.openai.com/codex/)
 
 화면 공유를 통해 게임 화면 일부를 OCR로 읽어 시계열 데이터로 기록하는 실험용 SPA입니다.
 
