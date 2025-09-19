@@ -96,6 +96,10 @@ export default function CaptureControls({
             ))}
           </div>
         </div>
+
+        <div className="rounded-lg border border-muted bg-muted/40 p-4 text-xs leading-relaxed text-muted-foreground">
+          모든 OCR·캡처 데이터는 로컬에서만 처리되며 서버로 전송되지 않습니다.
+        </div>
       </CardContent>
     </Card>
   )
