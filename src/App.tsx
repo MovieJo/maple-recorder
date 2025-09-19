@@ -67,7 +67,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto min-h-0">
         <div className="container mx-auto px-4 py-8">
           <div className="grid gap-6 lg:grid-cols-[320px,1fr]">
             <div className="space-y-6">
