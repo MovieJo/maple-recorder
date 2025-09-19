@@ -71,25 +71,72 @@ const VideoCanvas = forwardRef<VideoCanvasHandle, VideoCanvasProps>(
             return null
           }
 
-          const scaleX = video.videoWidth / video.clientWidth
-          const scaleY = video.videoHeight / video.clientHeight
+          const containerWidth = video.clientWidth
+          const containerHeight = video.clientHeight
+          const intrinsicWidth = video.videoWidth
+          const intrinsicHeight = video.videoHeight
+
+          if (
+            !containerWidth ||
+            !containerHeight ||
+            !intrinsicWidth ||
+            !intrinsicHeight
+          ) {
+            return null
+          }
+
+          const containerAspect = containerWidth / containerHeight
+          const intrinsicAspect = intrinsicWidth / intrinsicHeight
+
+          let renderedWidth = containerWidth
+          let renderedHeight = containerHeight
+          let offsetX = 0
+          let offsetY = 0
+
+          if (intrinsicAspect > containerAspect) {
+            renderedHeight = containerWidth / intrinsicAspect
+            offsetY = (containerHeight - renderedHeight) / 2
+          } else if (intrinsicAspect < containerAspect) {
+            renderedWidth = containerHeight * intrinsicAspect
+            offsetX = (containerWidth - renderedWidth) / 2
+          }
+
+          const roiLeft = roi.x - offsetX
+          const roiTop = roi.y - offsetY
+          const roiRight = roiLeft + roi.w
+          const roiBottom = roiTop + roi.h
+
+          const clampedLeft = Math.max(0, Math.min(renderedWidth, roiLeft))
+          const clampedTop = Math.max(0, Math.min(renderedHeight, roiTop))
+          const clampedRight = Math.max(0, Math.min(renderedWidth, roiRight))
+          const clampedBottom = Math.max(0, Math.min(renderedHeight, roiBottom))
+
+          const clampedWidth = clampedRight - clampedLeft
+          const clampedHeight = clampedBottom - clampedTop
+
+          if (clampedWidth <= 0 || clampedHeight <= 0) {
+            return null
+          }
+
+          const scaleX = intrinsicWidth / renderedWidth
+          const scaleY = intrinsicHeight / renderedHeight
 
           if (!Number.isFinite(scaleX) || !Number.isFinite(scaleY)) {
             return null
           }
 
           const canvas = document.createElement('canvas')
-          canvas.width = roi.w * scaleX
-          canvas.height = roi.h * scaleY
+          canvas.width = clampedWidth * scaleX
+          canvas.height = clampedHeight * scaleY
           const context = canvas.getContext('2d')
           if (!context) return null
 
           context.drawImage(
             video,
-            roi.x * scaleX,
-            roi.y * scaleY,
-            roi.w * scaleX,
-            roi.h * scaleY,
+            clampedLeft * scaleX,
+            clampedTop * scaleY,
+            clampedWidth * scaleX,
+            clampedHeight * scaleY,
             0,
             0,
             canvas.width,
