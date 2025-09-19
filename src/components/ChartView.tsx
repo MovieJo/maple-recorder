@@ -39,7 +39,7 @@ export default function ChartView({ data }: ChartViewProps) {
     .filter((point): point is ChartDataPoint => point !== null)
 
   return (
-    <Card className="h-full">
+    <Card>
       <CardHeader>
         <CardTitle>수치 변화 차트</CardTitle>
         <CardDescription>숫자로 인식된 값만 추려서 시계열로 표시합니다.</CardDescription>

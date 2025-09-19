@@ -57,49 +57,53 @@ export default function App() {
   }, [stream])
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto space-y-6 px-4 py-8">
-        <header className="space-y-2 text-center">
+    <div className="flex h-dvh flex-col bg-background">
+      <header className="border-b border-border/60">
+        <div className="container mx-auto space-y-2 px-4 py-8 text-center">
           <h1 className="text-3xl font-semibold tracking-tight">Maple Recorder</h1>
           <p className="text-sm text-muted-foreground">
             화면 공유를 통해 특정 영역의 텍스트를 주기적으로 추출하고 결과를 타임라인과 차트로 확인하세요.
           </p>
-        </header>
+        </div>
+      </header>
 
-        <div className="grid gap-6 lg:grid-cols-[320px,1fr]">
-          <div className="space-y-6">
-            <CaptureControls
-              capturing={Boolean(stream)}
-              onStart={startCapture}
-              onStop={stopCapture}
-              interval={intervalMs}
-              setIntervalMs={setIntervalMs}
-              roi={roi}
-              setRoi={setRoi}
-            />
-            <Timeline results={results} />
-          </div>
+      <main className="flex-1 overflow-y-auto">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid gap-6 lg:grid-cols-[320px,1fr]">
+            <div className="space-y-6">
+              <CaptureControls
+                capturing={Boolean(stream)}
+                onStart={startCapture}
+                onStop={stopCapture}
+                interval={intervalMs}
+                setIntervalMs={setIntervalMs}
+                roi={roi}
+                setRoi={setRoi}
+              />
+              <Timeline results={results} />
+            </div>
 
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>실시간 화면 미리보기</CardTitle>
-                <CardDescription>선택한 영역이 붉은 사각형으로 표시됩니다.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <VideoCanvas
-                  ref={videoRef}
-                  stream={stream}
-                  roi={roi}
-                  overlayRef={overlayRef}
-                  onMouseDown={onMouseDown}
-                />
-              </CardContent>
-            </Card>
-            <ChartView data={results} />
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>실시간 화면 미리보기</CardTitle>
+                  <CardDescription>선택한 영역이 붉은 사각형으로 표시됩니다.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <VideoCanvas
+                    ref={videoRef}
+                    stream={stream}
+                    roi={roi}
+                    overlayRef={overlayRef}
+                    onMouseDown={onMouseDown}
+                  />
+                </CardContent>
+              </Card>
+              <ChartView data={results} />
+            </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }

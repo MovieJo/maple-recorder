@@ -11,7 +11,7 @@ export default function Timeline({ results }: TimelineProps) {
   const hasResults = results.length > 0
 
   return (
-    <Card className="h-full">
+    <Card>
       <CardHeader>
         <CardTitle>인식 결과 타임라인</CardTitle>
       </CardHeader>
